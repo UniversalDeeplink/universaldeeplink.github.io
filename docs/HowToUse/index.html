@@ -355,13 +355,13 @@
 <p><img alt="szbb.png" src="../imgs/szbb.png" /></p>
 <h1 id="configuring-the-plugin">Configuring the Plugin</h1>
 <p>The configuration interface is under <strong>Window</strong> -&gt; <strong>ImaginationOverflow</strong> -&gt; <strong>Universal DeepLink Configuration</strong></p>
-<p><img alt="configuration.png" src="../../imgs/3344962158-configuration.png" /></p>
-<p><img alt="configuration.png" src="../../imgs/4123973642-configuration.png" /></p>
+<p><img alt="configuration.png" src="../imgs/3344962158-configuration.png" /></p>
+<p><img alt="configuration.png" src="../imgs/4123973642-configuration.png" /></p>
 <p>On some platforms, the operating system ask the player what app she wishes to use after clicking a custom URI, the <strong>Display Name</strong> allows you to configure what name will the OS show on that occasion.
 The <strong>Steam App Id</strong> is for Steam only games, you can read about Steam integration is [INSERT STEAM DOCUMENTATION HERE]. 
 The plugin allows you to configure the deep linking and domain association globally or per platform.</p>
 <h2 id="global-configuration">Global Configuration</h2>
-<p><img alt="configuration.png" src="../../imgs/2376466814-configuration.png" /></p>
+<p><img alt="configuration.png" src="../imgs/2376466814-configuration.png" /></p>
 <p>If you are using the same custom URIs and Domains for every platform, you only need to setup it once and the plugin will automatically propagate all data to all platforms as you build for them.</p>
 <p>To configure a Deep Link or a Domain Association you need to provide:</p>
 <ul>
@@ -371,14 +371,14 @@ The plugin allows you to configure the deep linking and domain association globa
 </ul>
 <h2 id="per-platform-configuration">Per Platform Configuration</h2>
 <p>When you wish to override any configuration for a specific platform you can do that by clicking on the specific platform checkbox. After that, you just need to fill out the Deep Linking and Domain Association data or leave it empty if you do not wish to support these features for that specific platform. Note that by checking a platform none of the global configurations will be used for that specific platform.</p>
-<p><img alt="configuration.png" src="../../imgs/354124551-configuration.png" /></p>
+<p><img alt="configuration.png" src="../imgs/354124551-configuration.png" /></p>
 <p>In the example above, we've changed the <strong>Android</strong> Deep Linking <strong>scheme</strong> to <strong>sudokuzenkaidroid</strong> and disabled the Domain Association capability. The remaining platforms will continue to use the global configurations.</p>
 <h1 id="testing">Testing</h1>
 <p>After your game is deployed to a device, you can test the integration simply by clicking on a configured URI on any app or website. As an example, you can send yourself a message (on any messaging app) or an email with the proper URI.</p>
 <h2 id="editor">Editor</h2>
-<p><img alt="configuration.png" src="../../imgs/2376466814-configuration.png" /></p>
+<p><img alt="configuration.png" src="../imgs/2376466814-configuration.png" /></p>
 <p>We include a simple interface where you can test your deep linking activation without deploying, you can insert any valid and invalid URIs in order to test your integration. </p>
-<p><img alt="configuration.png" src="../../imgs/1238534982-configuration.png" /></p>
+<p><img alt="configuration.png" src="../imgs/1238534982-configuration.png" /></p>
 <p>When you press Debug, the LinkActivated will be triggered and your callback called if the application is running in the editor.</p>
 <h2 id="ios">iOS</h2>
 <h3 id="simulator">Simulator</h3>
@@ -413,7 +413,7 @@ The plugin allows you to configure the deep linking and domain association globa
 
 <h2 id="windows-10">Windows 10</h2>
 <p>You can use windows run program to test your integration, just click on the <strong>Windows Button</strong> and <strong>R</strong> and place your URI on the command option and press <strong>Ok</strong>. 
-<img alt="configuration.png" src="../../imgs/1928454388-configuration.png" /></p>
+<img alt="configuration.png" src="../imgs/1928454388-configuration.png" /></p>
 <h2 id="mac">Mac</h2>
 <p>Open up a terminal and use the <strong>Open</strong> command:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>open  <span class="o">[</span>MY_URI_HERE<span class="o">]</span>
