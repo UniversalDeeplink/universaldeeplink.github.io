@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-     <loc>/</loc>
+     <loc>https://universaldeeplinking.imaginationoverflow.com/</loc>
      <lastmod>2018-06-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/HowToUse/</loc>
+     <loc>https://universaldeeplinking.imaginationoverflow.com/GettingStarted/</loc>
      <lastmod>2018-06-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/DomainAssociationConfig/</loc>
+     <loc>https://universaldeeplinking.imaginationoverflow.com/DomainAssociation/</loc>
      <lastmod>2018-06-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/SteamIntegration/</loc>
+     <loc>https://universaldeeplinking.imaginationoverflow.com/SteamIntegration/</loc>
      <lastmod>2018-06-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/DeepDive/</loc>
+     <loc>https://universaldeeplinking.imaginationoverflow.com/Internals/</loc>
      <lastmod>2018-06-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>/DeepDive/</loc>
+     <loc>https://universaldeeplinking.imaginationoverflow.com/DeepLinkingDomainAssociation/</loc>
      <lastmod>2018-06-29</lastmod>
      <changefreq>daily</changefreq>
     </url>

@@ -10,7 +10,13 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
+        <meta name="description" content="Deeplinking and Domain Association plugin for Unity">
       
+      
+        <link rel="canonical" href="https://universaldeeplinking.imaginationoverflow.com/">
+      
+      
+        <meta name="author" content="ImaginationOverflow - Ana Correia & Diogo Cardoso">
       
       
         <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -42,6 +48,12 @@
     
       <link rel="stylesheet" href="./assets/stylesheets/application.ba0fd1a6.css">
       
+        <link rel="stylesheet" href="./assets/stylesheets/application-palette.6079476c.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
       
     
     
@@ -59,7 +71,9 @@
     
   </head>
   
-    <body dir="ltr">
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     <svg class="md-svg">
       <defs>
@@ -80,7 +94,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="." title="Universal Deeplinking" class="md-header-nav__button md-logo">
+        <a href="https://universaldeeplinking.imaginationoverflow.com" title="Universal Deeplinking" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -189,7 +203,7 @@
 
 
   <li class="md-nav__item">
-    <a href="HowToUse/" title="Getting Started" class="md-nav__link">
+    <a href="GettingStarted/" title="Getting Started" class="md-nav__link">
       Getting Started
     </a>
   </li>
@@ -201,7 +215,7 @@
 
 
   <li class="md-nav__item">
-    <a href="DomainAssociationConfig/" title="Domain Association" class="md-nav__link">
+    <a href="DomainAssociation/" title="Domain Association" class="md-nav__link">
       Domain Association
     </a>
   </li>
@@ -225,7 +239,7 @@
 
 
   <li class="md-nav__item">
-    <a href="DeepDive/" title="Inside the Plugin" class="md-nav__link">
+    <a href="Internals/" title="Inside the Plugin" class="md-nav__link">
       Inside the Plugin
     </a>
   </li>
@@ -237,7 +251,7 @@
 
 
   <li class="md-nav__item">
-    <a href="DeepDive/" title="Deeplinking and URI association" class="md-nav__link">
+    <a href="DeepLinkingDomainAssociation/" title="Deeplinking and URI association" class="md-nav__link">
       Deeplinking and URI association
     </a>
   </li>
@@ -271,7 +285,15 @@
               
                 
                 
-                <h1 id="how-to-use"><a href="https://bitbucket.org/DVDPT/universaldeeplinking/wiki/How%20To%20Use">How to use</a></h1>
+                <p>ImaginationOverflow Universal Deep Linking plugin enables your games to use <strong>Deep Linking</strong> and <strong>Domain Association</strong> in iOS, Android, Windows 10 (UWP), Standalone (Linux, Mac, and Windows).</p>
+<p><strong>Deep Linking</strong> "<em>consists of using a uniform resource identifier (URI) that links to a specific location within a mobile app rather than simply launching the app.</em>" (<a href="https://en.wikipedia.org/wiki/Mobile_deep_linking">Mobile deep linking @ Wikipedia</a>)</p>
+<p><strong>Domain Association</strong> is a similar feature but instead of using custom URIs (<em>mycustomuri://somecontent</em>) it utilizes  <strong>Web URIs</strong> (<em>www.mydomain/somecontent</em>) to directly open your games on a specific location</p>
+<p>Each mobile platform has a specific name for this feature, <strong>iOS</strong> calls it <a href="https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content"><strong>Universal Links</strong></a>, <strong>Android</strong> has its <a href="https://developer.android.com/training/app-links/"><strong>App links</strong></a> and <strong>Windows 10</strong> named it <a href="https://docs.microsoft.com/en-us/windows/uwp/launch-resume/web-to-app-linking"><strong>Uri handling</strong></a>, throughout this documentation we will refering the ability to associate a web URI with your game as <strong>Domain Association</strong>.</p>
+<p>We will be using our game <a href="http://sudokuzenkai.imaginationoverflow.com">Sudoku Zenkai</a> (<a href="https://itunes.apple.com/us/app/sudoku-zenkai/id1350745084">iOS</a>, <a href="https://play.google.com/store/apps/details?id=com.imaginationoverflow.sudokuzenkai">Android</a>, <a href="https://www.microsoft.com/store/apps/9ND85HBDBNXZ">Windows 10</a> and <a href="http://store.steampowered.com/app/809850">Steam</a>) as a use case throughout this documentation. Anyone that purchases the plugin in entitled to a free Steam key to check a live example of this plugin usage, to get it just contact us on our <a href="https://discord.gg/WNQqeTW">Discord channel</a> or via <a href="mailto://contact@imaginationoverflow.com">mail</a></p>
+<p>Universal Deep Linking plugin enables your games to use <strong>Deep Linking</strong> on iOS, Android, Windows (UWP), Windows, Mac, Linux and Steam (Linux, Mac, and Windows). </p>
+<p>Currently, the plugin supports <strong>Domain Association</strong> to iOS, Android and Windows UWP (Mobile, Tablet, and Desktop).</p>
+<p>TODO: Fill the below with an actuall index</p>
+<h1 id="how-to-use"><a href="https://bitbucket.org/DVDPT/universaldeeplinking/wiki/How%20To%20Use">How to use</a><a class="headerlink" href="#how-to-use" title="Permanent link">&para;</a></h1>
 <ul>
 <li>What is deep linking and Url asscoiation</li>
 <li>Install</li>
@@ -280,19 +302,19 @@
 <li>How to test</li>
 <li>Standalone considerations</li>
 </ul>
-<h1 id="configuring-your-website-for-domain-association-universal-links-app-links-uri-handling"><a href="https://bitbucket.org/DVDPT/universaldeeplinking/wiki/Configuring%20your%20website%20for%20Domain%20Association">Configuring your website for Domain Association (Universal Links, App links, Uri handling)</a></h1>
+<h1 id="configuring-your-website-for-domain-association-universal-links-app-links-uri-handling"><a href="https://bitbucket.org/DVDPT/universaldeeplinking/wiki/Configuring%20your%20website%20for%20Domain%20Association">Configuring your website for Domain Association (Universal Links, App links, Uri handling)</a><a class="headerlink" href="#configuring-your-website-for-domain-association-universal-links-app-links-uri-handling" title="Permanent link">&para;</a></h1>
 <ul>
 <li>iOS</li>
 <li>Android</li>
 <li>UWP</li>
 </ul>
-<h1 id="deep-dive"><a href="https://bitbucket.org/DVDPT/universaldeeplinking/wiki/Deep%20Dive">Deep dive</a></h1>
+<h1 id="deep-dive"><a href="https://bitbucket.org/DVDPT/universaldeeplinking/wiki/Deep%20Dive">Deep dive</a><a class="headerlink" href="#deep-dive" title="Permanent link">&para;</a></h1>
 <ul>
 <li>Dlls content</li>
 <li>How it works in game
  Droid, ios, standalone, mac</li>
 </ul>
-<h1 id="deeplinking-and-uri-association"><a href="https://go.gameanalytics.com/game/46725/realtime">Deeplinking and URI association</a></h1>
+<h1 id="deeplinking-and-uri-association"><a href="https://go.gameanalytics.com/game/46725/realtime">Deeplinking and URI association</a><a class="headerlink" href="#deeplinking-and-uri-association" title="Permanent link">&para;</a></h1>
 <ul>
 <li>Android</li>
 <li>ios</li>
@@ -301,7 +323,7 @@
 <li>Linux</li>
 <li>Mac</li>
 </ul>
-<h1 id="steam-integration"><a href="https://bitbucket.org/DVDPT/universaldeeplinking/wiki/Steam%20Integration">Steam Integration</a></h1>
+<h1 id="steam-integration"><a href="https://bitbucket.org/DVDPT/universaldeeplinking/wiki/Steam%20Integration">Steam Integration</a><a class="headerlink" href="#steam-integration" title="Permanent link">&para;</a></h1>
 <ul>
 <li>how to integrate</li>
 <li>Standalone vs Steam standalone</li>
@@ -328,7 +350,7 @@
       <nav class="md-footer-nav__inner md-grid">
         
         
-          <a href="HowToUse/" title="Getting Started" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="GettingStarted/" title="Getting Started" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
@@ -349,6 +371,10 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 ImaginationOverflow
+          </div>
+        
         powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
@@ -357,6 +383,19 @@
       </div>
       
         
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="./assets/fonts/font-awesome.css">
+    
+      <a href="http://struct.cc" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/squidfunk" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/squidfunk" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/in/squidfunk" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
       
     </div>
   </div>
