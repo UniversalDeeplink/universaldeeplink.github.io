@@ -404,25 +404,21 @@
 <p><img alt="appid.png" src="../imgs/3879749644-appid.png" /></p>
 <p>From the above image, set-aside the <strong>Prefix</strong> and the <strong>ID</strong>. In Sudoku Zenkai case the Prefix is <em>5DVD99WQGR</em> and the ID <em>com.imaginationoverflow.com.sudokuzenkai</em>.</p>
 <p>Now you need to create a json file named <strong>apple-app-site-association</strong> (no extension) with the following contents:</p>
-<div class="codehilite"><pre><span></span>#!json
-
-{
-    &quot;applinks&quot;: {
-        &quot;apps&quot;: [],
-        &quot;details&quot;: [
-            {
-                &quot;appID&quot;: &quot;[PREFIX].[ID]&quot;,
-                &quot;paths&quot;: [ &quot;*&quot;]
-            }
-        ]
-    }
-}
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;applinks&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;apps&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;details&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;appID&quot;</span><span class="p">:</span> <span class="s2">&quot;[PREFIX].[ID]&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;paths&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;*&quot;</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
 <p>With the file created you need to upload it to your website. The file should be accessible on either, the root or the <strong>.well-known</strong> directory:</p>
-<div class="codehilite"><pre><span></span>#!bash
-
-https://&lt;your_domain&gt;/.well-known/apple-app-site-association
+<div class="codehilite"><pre><span></span>https://&lt;your_domain&gt;/.well-known/apple-app-site-association
 
 or
 
@@ -441,29 +437,23 @@ In the Android options you will find the <strong>Package Name</strong> setting: 
 <p>For more info on how to choose a package name checkout <a href="https://developer.android.com/studio/build/application-id">Google Documentation</a>.</p>
 <p>The second thing you need to have is a keystore, you need to sign your game before submitting it to the store, you can get more info on <a href="https://developer.android.com/studio/publish/app-signing">Google documentation</a> about this topic.</p>
 <p>After creating your keystore, you need to get <strong>SHA-256 certificate fingerprint</strong>, to do that just run the following command on your terminal (note the keytool comes with the Java SDK) :</p>
-<div class="codehilite"><pre><span></span>#!bash
-
-keytool -list -v -keystore mystorekeystore.keystore
+<div class="codehilite"><pre><span></span>keytool -list -v -keystore mystorekeystore.keystore
 </pre></div>
 
 <p>Running this command should yield something similar to the following image:
 <img alt="keystool.png" src="../imgs/3985997309-keystool.png" /></p>
 <p>With the package name and SHA-256 certificate fingerprint, you can finally create the <a href="https://developers.google.com/digital-asset-links/v1/getting-started">digital asset link</a> file, the filename should be <strong>assetlinks.json</strong></p>
-<p><div class="codehilite"><pre><span></span>#!json
-
-[{
-  &quot;relation&quot;: [&quot;delegate_permission/common.handle_all_urls&quot;],
-  &quot;target&quot;: {
-    &quot;namespace&quot;: &quot;android_app&quot;,
-    &quot;package_name&quot;: &quot;[MY_APP_PACKAGE_NAME]&quot;,
-    &quot;sha256_cert_fingerprints&quot;: [&quot;[SHA256_FINGERPRINT_FROM_KEYTOOL]&quot;]
-  }
-}]
+<p><div class="codehilite"><pre><span></span><span class="p">[{</span>
+  <span class="nt">&quot;relation&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;delegate_permission/common.handle_all_urls&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;namespace&quot;</span><span class="p">:</span> <span class="s2">&quot;android_app&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;package_name&quot;</span><span class="p">:</span> <span class="s2">&quot;[MY_APP_PACKAGE_NAME]&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;sha256_cert_fingerprints&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;[SHA256_FINGERPRINT_FROM_KEYTOOL]&quot;</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}]</span>
 </pre></div>
 Finally you need to host the file on your website, it needs to be available on the <strong>root</strong> or <strong>.well-known</strong> directory.</p>
-<div class="codehilite"><pre><span></span>#!bash
-
-https://&lt;your_domain&gt;/.well-known/assetlinks.json
+<div class="codehilite"><pre><span></span>https://&lt;your_domain&gt;/.well-known/assetlinks.json
 
 or
 
@@ -480,13 +470,11 @@ https://&lt;your_domain&gt;/assetlinks.json
 <p><img alt="uwppfn.png" src="../imgs/2042686022-uwppfn.png" /></p>
 <p>From there you can check your game <strong>Package Family Name</strong>, just as seen in the picture above.</p>
 <p>With it, you need to create a json file named <strong>windows-app-web-link</strong> (no extension) and upload it to your website, under the <strong>root</strong> or <strong>.well-know</strong> directory.</p>
-<div class="codehilite"><pre><span></span>#!json
-
-[{
-  &quot;packageFamilyName&quot;: &quot;[YOUR_PACKAGE_FAMILY_NAME]&quot;,
-  &quot;paths&quot;: [ &quot;*&quot; ],
-  &quot;excludePaths&quot; : [ ]
- }] 
+<div class="codehilite"><pre><span></span><span class="p">[{</span>
+  <span class="nt">&quot;packageFamilyName&quot;</span><span class="p">:</span> <span class="s2">&quot;[YOUR_PACKAGE_FAMILY_NAME]&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;paths&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;*&quot;</span> <span class="p">],</span>
+  <span class="nt">&quot;excludePaths&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">]</span>
+ <span class="p">}]</span> 
 </pre></div>
 
 <p>For some examples check out Sudoku Zenkai and Loyca <strong>windows-app-web-link</strong> files:</p>

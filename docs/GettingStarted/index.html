@@ -545,35 +545,31 @@
 <span class="p">}</span>
 </pre></div>
 Never forget to remove your event registration when the <strong>GameObject</strong> where you registered it is <strong>destroyed</strong>:</p>
-<div class="codehilite"><pre><span></span>csharp
-void OnDestroy()
-{
-    ImaginationOverflow.UniversalDeepLinking.DeepLinkManager.Instance.LinkActivated -= Instance_LinkActivated;
-}
+<div class="codehilite"><pre><span></span><span class="k">void</span> <span class="nf">OnDestroy</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">ImaginationOverflow</span><span class="p">.</span><span class="n">UniversalDeepLinking</span><span class="p">.</span><span class="n">DeepLinkManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">LinkActivated</span> <span class="p">-=</span> <span class="n">Instance_LinkActivated</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 
 <p>The <strong>LinkActivated</strong> event will be triggered when your game is <strong>started</strong> or <strong>resumed</strong> by a Deep Link or Domain activation.</p>
 <p>The <strong>LinkActivated</strong> event single argument <strong>LinkActivation</strong> contains the Uri that triggered the game activation, a string with the raw <a href="https://en.wikipedia.org/wiki/Query_string">Query String</a> and a Dictionary with the query string already processed: </p>
-<div class="codehilite"><pre><span></span>csharp
+<div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">LinkActivation</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Uri</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 
-public class LinkActivation
-{
-    public string Uri { get; private set; }
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">RawQueryString</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 
-    public string RawQueryString { get; private set; }
-
-    public Dictionary&lt;string, string&gt; QueryString { get; private set; }
-}
+    <span class="k">public</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">QueryString</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
 <p>Consider the following example:</p>
-<p><div class="codehilite"><pre><span></span>csharp
-private void Instance_LinkActivated2(ImaginationOverflow.UniversalDeepLinking.LinkActivation linkActivation)
-{
-    var url = linkActivation.Url;
-    var querystring = linkActivation.RawQueryString;
-    var qParameter = linkActivation.QueryString[&quot;q&quot;];
-}
+<p><div class="codehilite"><pre><span></span><span class="k">private</span> <span class="k">void</span> <span class="nf">Instance_LinkActivated</span><span class="p">(</span><span class="n">ImaginationOverflow</span><span class="p">.</span><span class="n">UniversalDeepLinking</span><span class="p">.</span><span class="n">LinkActivation</span> <span class="n">linkActivation</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">url</span> <span class="p">=</span> <span class="n">linkActivation</span><span class="p">.</span><span class="n">Uri</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">querystring</span> <span class="p">=</span> <span class="n">linkActivation</span><span class="p">.</span><span class="n">RawQueryString</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">qParameter</span> <span class="p">=</span> <span class="n">linkActivation</span><span class="p">.</span><span class="n">QueryString</span><span class="p">[</span><span class="s">&quot;q&quot;</span><span class="p">];</span>
+<span class="p">}</span>
 </pre></div>
 If Sudoku Zenkai is activated with the following link:</p>
 <p><a href="https://sudokuzenkai.imaginationoverflow.com/dailychallenge?q=ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA==">https://sudokuzenkai.imaginationoverflow.com/dailychallenge?q=ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA==</a></p>
@@ -617,37 +613,26 @@ The plugin allows you to configure the deep linking and domain association globa
 <h3 id="ios">iOS<a class="headerlink" href="#ios" title="Permanent link">&para;</a></h3>
 <h4 id="simulator">Simulator<a class="headerlink" href="#simulator" title="Permanent link">&para;</a></h4>
 <p>After your game is installed on a simulator, open a terminal and run the following command:</p>
-<p><div class="codehilite"><pre><span></span>#!bash
-
-xcrun simctl openurl booted &quot;[MY_URI_HERE]&quot;
-</pre></div>
-<strong>Examples</strong></p>
-<div class="codehilite"><pre><span></span>#!bash
-
-xcrun simctl openurl booted &quot;sudokuzenkai://dailychallenge?q=ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA==&quot;
+<div class="codehilite"><pre><span></span>xcrun simctl openurl booted <span class="s2">&quot;[MY_URI_HERE]&quot;</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>#!bash
+<p><strong>Examples</strong></p>
+<div class="codehilite"><pre><span></span>xcrun simctl openurl booted <span class="s2">&quot;sudokuzenkai://dailychallenge?q=ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA==&quot;</span>
+</pre></div>
 
-xcrun simctl openurl booted &quot;https://sudokuzenkai.imaginationoverflow.com/dailychallenge?q=ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA==&quot;
+<div class="codehilite"><pre><span></span>xcrun simctl openurl booted <span class="s2">&quot;https://sudokuzenkai.imaginationoverflow.com/dailychallenge?q=ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA==&quot;</span>
 </pre></div>
 
 <h3 id="android">Android<a class="headerlink" href="#android" title="Permanent link">&para;</a></h3>
 <p>Open a terminal on your development machine, open a terminal (console or powershell) and run the command:</p>
-<div class="codehilite"><pre><span></span>#!bash
-
-adb shell am start -W -a android.intent.action.VIEW -d &quot;[MY_URI_HERE]&quot;
+<div class="codehilite"><pre><span></span>adb shell am start -W -a android.intent.action.VIEW -d <span class="s2">&quot;[MY_URI_HERE]&quot;</span>
 </pre></div>
 
 <p><strong>Examples</strong></p>
-<div class="codehilite"><pre><span></span>#!bash
-
-adb shell am start -W -a android.intent.action.VIEW -d &quot;sudokuzenkai://dailychallenge?q=ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA==&quot;
+<div class="codehilite"><pre><span></span>adb shell am start -W -a android.intent.action.VIEW -d <span class="s2">&quot;sudokuzenkai://dailychallenge?q=ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA==&quot;</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>#!bash
-
-adb shell am start -W -a android.intent.action.VIEW -d &quot;https://sudokuzenkai.imaginationoverflow.com/dailychallenge?q=ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA==&quot;
+<div class="codehilite"><pre><span></span>adb shell am start -W -a android.intent.action.VIEW -d <span class="s2">&quot;https://sudokuzenkai.imaginationoverflow.com/dailychallenge?q=ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA==&quot;</span>
 </pre></div>
 
 <h3 id="windows-10">Windows 10<a class="headerlink" href="#windows-10" title="Permanent link">&para;</a></h3>
@@ -655,25 +640,17 @@ adb shell am start -W -a android.intent.action.VIEW -d &quot;https://sudokuzenka
 <img alt="configuration.png" src="../imgs/1928454388-configuration.png" /></p>
 <h3 id="mac">Mac<a class="headerlink" href="#mac" title="Permanent link">&para;</a></h3>
 <p>Open up a terminal and use the <strong>Open</strong> command:
-<div class="codehilite"><pre><span></span>#!bash
-
-open  [MY_URI_HERE]
+<div class="codehilite"><pre><span></span>open  <span class="o">[</span>MY_URI_HERE<span class="o">]</span>
 </pre></div></p>
-<div class="codehilite"><pre><span></span>#!bash
-
-open  sudokuzenkai://dailychallenge?q=ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA==
+<div class="codehilite"><pre><span></span>open  sudokuzenkai://dailychallenge?q<span class="o">=</span><span class="nv">ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA</span><span class="o">==</span>
 </pre></div>
 
 <h3 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h3>
 <p>On Linux you can use the xdg-open command to test your integration, open up a terminal and run the following command.</p>
-<div class="codehilite"><pre><span></span>#!bash
-
-xdg-open  [MY_URI_HERE]
+<div class="codehilite"><pre><span></span>xdg-open  <span class="o">[</span>MY_URI_HERE<span class="o">]</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>#!bash
-
-xdg-open  sudokuzenkai://dailychallenge?q=ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA==
+<div class="codehilite"><pre><span></span>xdg-open  sudokuzenkai://dailychallenge?q<span class="o">=</span><span class="nv">ZMORw4TDhcOKw4fDisOKw4jDhMOFw4bDjMOEw4TDhMOEw4TDhMOEw4TClA</span><span class="o">==</span>
 </pre></div>
 
 <h2 id="standalone-considerations">Standalone Considerations<a class="headerlink" href="#standalone-considerations" title="Permanent link">&para;</a></h2>

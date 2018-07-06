@@ -259,6 +259,19 @@
     Mac and Steam Integration
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solution-suggestion" title="Solution Suggestion" class="md-nav__link">
+    Solution Suggestion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -333,6 +346,19 @@
     Mac and Steam Integration
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solution-suggestion" title="Solution Suggestion" class="md-nav__link">
+    Solution Suggestion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -378,8 +404,80 @@
 </pre></div>
 
 <h2 id="mac-and-steam-integration">Mac and Steam Integration<a class="headerlink" href="#mac-and-steam-integration" title="Permanent link">&para;</a></h2>
-<p>Mac Deep Linking works a little different from the Windows and Linux, you have to take special care when integrating the plugin with Mac and Steam.</p>
-<p>The OS itself doesn't know that is running a Steam game, so when the user clicks on a custom URI, the OS opens the game executable [MORE DEEP DIVE]. So you need to manually enforce the DRM after you get the deep linking data TO BE COMPLETEd</p>
+<p>Mac Deep Linking works a little different from the Windows and Linux, you have to take special care when integrating the plugin with Mac and Steam. On Linux and Windows, the plugin handles the registration of the Deep Link when the game is first open. This enables the plugin to register whatever it wants on these platforms. On Mac, the Deep Link feature is fully controlled by the OS and the plugin can't change the default configuration, which opens your game directly.</p>
+<p>The OS itself doesn't know that is running a Steam game, so when the user clicks on a custom URI, the OS opens the game executable. This means that you need to explicitly delay the enforcement of the DRM until you know if the game was activated via Deep Linking or not.</p>
+<p>The plugin is configured in a way that when it's running a Steam game on MacOS <strong>it will always</strong> fire the LinkActivated event even if the game wasn't activated via Deep Link. This way is possible to store the Deep Link before enforcing any DRM in the game. </p>
+<h3 id="solution-suggestion">Solution Suggestion<a class="headerlink" href="#solution-suggestion" title="Permanent link">&para;</a></h3>
+<p>Below is the code that we use on Sudoku Zenkai to handle this tricky issue, for Steam integration we are using <a href="https://steamworks.github.io/">Steamworks.NET</a>.</p>
+<p>The user flow for this situation is the following:</p>
+<ol>
+<li>User clicks on a Deep Link.</li>
+<li>The game opens</li>
+<li>The game enforces DRM and launches the game on Steam.</li>
+<li>Steam launches (if not already running).</li>
+<li>Steam launches the game.</li>
+</ol>
+<p>To ensure that we process the Deep Link that the user initially clicked we need to save it before enforcing the DRM, in the code below we do exactly that:</p>
+<ol>
+<li>The game is activated via Deep Link.</li>
+<li>The LinkActivated event is triggered.</li>
+<li>Save the link information (since it's impossible to have the game launch on steam via Deep Link)</li>
+<li>Check if the game has steam access, if not restart.</li>
+<li>If we are already on steam, load the previously saved Deep Link</li>
+<li>Resume Deep Link activation.</li>
+</ol>
+<p>This behavior is only possible because <strong>the plugin always triggers</strong> the LinkActivated event (on Steam Mac builds) regardless if it was activated via a Deep Link or not.</p>
+<div class="codehilite"><pre><span></span>    <span class="k">public</span> <span class="k">void</span> <span class="nf">RegisterForActivation</span><span class="p">()</span>
+    <span class="p">{</span>
+<span class="cp">#if UNITY_STANDALONE_OSX &amp;&amp; STEAM_BUILD</span>
+        <span class="n">DeepLinkManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">LinkActivated</span> <span class="p">+=</span> <span class="n">SteamOsxActivation</span><span class="p">;</span>
+<span class="cp">#else</span>
+        <span class="n">DeepLinkManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">LinkActivated</span> <span class="p">+=</span> <span class="n">Instance_LinkActivated</span><span class="p">;</span>
+<span class="cp">#endif</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">SteamOsxActivation</span><span class="p">(</span><span class="n">LinkActivation</span> <span class="n">s</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//</span>
+        <span class="c1">//  On Steam OSX builds the plugin triggers the LinkActivated with the  </span>
+        <span class="c1">//  deep link data or with a null Uri if it wasn&#39;t activated </span>
+        <span class="c1">//  via Deep Linking</span>
+        <span class="c1">//</span>
+        <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">Uri</span><span class="p">)</span> <span class="p">==</span> <span class="k">false</span><span class="p">)</span>
+            <span class="n">YourGameStorage</span><span class="p">.</span><span class="n">SaveDeepLinkActivation</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+
+        <span class="c1">//</span>
+        <span class="c1">//  Enforce DRM</span>
+        <span class="c1">//</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Steamworks</span><span class="p">.</span><span class="n">SteamAPI</span><span class="p">.</span><span class="n">RestartAppIfNecessary</span><span class="p">(</span><span class="k">new</span> <span class="n">Steamworks</span><span class="p">.</span><span class="n">AppId_t</span><span class="p">([</span><span class="n">YourAppId</span><span class="p">])))</span>
+        <span class="p">{</span>
+            <span class="n">Application</span><span class="p">.</span><span class="n">Quit</span><span class="p">();</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">//</span>
+        <span class="c1">//  We are already running on Steam, so load any saved deep linking </span>
+        <span class="c1">//  activations</span>
+        <span class="c1">//</span>
+        <span class="n">s</span> <span class="p">=</span> <span class="n">YourGameStorage</span><span class="p">.</span><span class="n">LoadDeepLinkActivation</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="k">return</span><span class="p">;</span>
+
+        <span class="c1">//</span>
+        <span class="c1">//  Clear the activation ensuring that the game won&#39;t be activated again </span>
+        <span class="c1">//  with the same uri this depends on your storage infrastructure.</span>
+        <span class="c1">//  </span>
+        <span class="n">YourGameStorage</span><span class="p">.</span><span class="n">ClearDeepLinkActivation</span><span class="p">();</span>
+
+        <span class="c1">//</span>
+        <span class="c1">//  Process deep link activation</span>
+        <span class="c1">//</span>
+        <span class="n">Instance_LinkActivated</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+    <span class="p">}</span>
+</pre></div>
+
+<p>This behavior only happens when the game is running on Mac and you set the Steam flag to true, on the other combinations the plugin only fires the LinkActivated event in case of an actual activation.</p>
                 
                   
                 
