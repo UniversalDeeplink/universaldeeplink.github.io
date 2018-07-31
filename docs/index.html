@@ -85,7 +85,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#how-to-use" tabindex="1" class="md-skip">
+      <a href="#getting-started" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -187,12 +187,65 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
-      
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Home
+      </label>
     
     <a href="." title="Home" class="md-nav__link md-nav__link--active">
       Home
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" title="Getting Started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domain-association" title="Domain Association" class="md-nav__link">
+    Domain Association
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam-integration" title="Steam Integration" class="md-nav__link">
+    Steam Integration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inside-the-plugin" title="Inside the Plugin" class="md-nav__link">
+    Inside the Plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#showcase" title="Showcase" class="md-nav__link">
+    Showcase
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -251,8 +304,8 @@
 
 
   <li class="md-nav__item">
-    <a href="DeepLinkingDomainAssociation/" title="Deeplinking and URI association" class="md-nav__link">
-      Deeplinking and URI association
+    <a href="Showcase/" title="Showcase" class="md-nav__link">
+      Showcase
     </a>
   </li>
 
@@ -271,8 +324,50 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" title="Getting Started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domain-association" title="Domain Association" class="md-nav__link">
+    Domain Association
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam-integration" title="Steam Integration" class="md-nav__link">
+    Steam Integration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inside-the-plugin" title="Inside the Plugin" class="md-nav__link">
+    Inside the Plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#showcase" title="Showcase" class="md-nav__link">
+    Showcase
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
   
 </nav>
                   </div>
@@ -285,6 +380,8 @@
               
                 
                 
+                  <h1>Home</h1>
+                
                 <p>ImaginationOverflow Universal Deep Linking plugin enables your games to use <strong>Deep Linking</strong> and <strong>Domain Association</strong> in iOS, Android, Windows 10 (UWP), Standalone (Linux, Mac, and Windows).</p>
 <p><strong>Deep Linking</strong> "<em>consists of using a uniform resource identifier (URI) that links to a specific location within a mobile app rather than simply launching the app.</em>" (<a href="https://en.wikipedia.org/wiki/Mobile_deep_linking">Mobile deep linking @ Wikipedia</a>)</p>
 <p><strong>Domain Association</strong> is a similar feature but instead of using custom URIs (<em>mycustomuri://somecontent</em>) it utilizes  <strong>Web URIs</strong> (<em>www.mydomain/somecontent</em>) to directly open your games on a specific location</p>
@@ -292,42 +389,31 @@
 <p>We will be using our game <a href="http://sudokuzenkai.imaginationoverflow.com">Sudoku Zenkai</a> (<a href="https://itunes.apple.com/us/app/sudoku-zenkai/id1350745084">iOS</a>, <a href="https://play.google.com/store/apps/details?id=com.imaginationoverflow.sudokuzenkai">Android</a>, <a href="https://www.microsoft.com/store/apps/9ND85HBDBNXZ">Windows 10</a> and <a href="http://store.steampowered.com/app/809850">Steam</a>) as a use case throughout this documentation. Anyone that purchases the plugin in entitled to a free Steam key to check a live example of this plugin usage, to get it just contact us on our <a href="https://discord.gg/WNQqeTW">Discord channel</a> or via <a href="mailto://contact@imaginationoverflow.com">mail</a></p>
 <p>Universal Deep Linking plugin enables your games to use <strong>Deep Linking</strong> on iOS, Android, Windows (UWP), Windows, Mac, Linux and Steam (Linux, Mac, and Windows). </p>
 <p>Currently, the plugin supports <strong>Domain Association</strong> to iOS, Android and Windows UWP (Mobile, Tablet, and Desktop).</p>
-<p>TODO: Fill the below with an actuall index</p>
-<h1 id="how-to-use"><a href="https://bitbucket.org/DVDPT/universaldeeplinking/wiki/How%20To%20Use">How to use</a><a class="headerlink" href="#how-to-use" title="Permanent link">&para;</a></h1>
+<h2 id="getting-started"><a href="./GettingStarted/">Getting Started</a><a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <ul>
-<li>What is deep linking and Url asscoiation</li>
-<li>Install</li>
-<li>Referencing</li>
-<li>Configuring (global and per plat)</li>
-<li>How to test</li>
-<li>Standalone considerations</li>
+<li>How to Use</li>
+<li>Configuring the Plugin</li>
+<li>Testing</li>
 </ul>
-<h1 id="configuring-your-website-for-domain-association-universal-links-app-links-uri-handling"><a href="https://bitbucket.org/DVDPT/universaldeeplinking/wiki/Configuring%20your%20website%20for%20Domain%20Association">Configuring your website for Domain Association (Universal Links, App links, Uri handling)</a><a class="headerlink" href="#configuring-your-website-for-domain-association-universal-links-app-links-uri-handling" title="Permanent link">&para;</a></h1>
+<h2 id="domain-association"><a href="./DomainAssociation/">Domain Association</a><a class="headerlink" href="#domain-association" title="Permanent link">&para;</a></h2>
 <ul>
 <li>iOS</li>
 <li>Android</li>
-<li>UWP</li>
+<li>Windows UWP (Windows Store Apps)</li>
 </ul>
-<h1 id="deep-dive"><a href="https://bitbucket.org/DVDPT/universaldeeplinking/wiki/Deep%20Dive">Deep dive</a><a class="headerlink" href="#deep-dive" title="Permanent link">&para;</a></h1>
+<h2 id="steam-integration"><a href="./SteamIntegration/">Steam Integration</a><a class="headerlink" href="#steam-integration" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Dlls content</li>
-<li>How it works in game
- Droid, ios, standalone, mac</li>
+<li>Configuring the Plugin</li>
+<li>Mac integration details</li>
 </ul>
-<h1 id="deeplinking-and-uri-association"><a href="https://go.gameanalytics.com/game/46725/realtime">Deeplinking and URI association</a><a class="headerlink" href="#deeplinking-and-uri-association" title="Permanent link">&para;</a></h1>
+<h2 id="inside-the-plugin"><a href="./Internals/">Inside the Plugin</a><a class="headerlink" href="#inside-the-plugin" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Android</li>
-<li>ios</li>
-<li>UWP</li>
-<li>Windows</li>
-<li>Linux</li>
-<li>Mac</li>
+<li>Overview</li>
+<li>Details on all supported platforms</li>
 </ul>
-<h1 id="steam-integration"><a href="https://bitbucket.org/DVDPT/universaldeeplinking/wiki/Steam%20Integration">Steam Integration</a><a class="headerlink" href="#steam-integration" title="Permanent link">&para;</a></h1>
+<h2 id="showcase"><a href="./Showcase/">Showcase</a><a class="headerlink" href="#showcase" title="Permanent link">&para;</a></h2>
 <ul>
-<li>how to integrate</li>
-<li>Standalone vs Steam standalone</li>
-<li>Mac issue</li>
+<li>Games using the Plugin</li>
 </ul>
                 
                   
