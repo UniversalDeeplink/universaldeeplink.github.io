@@ -37,7 +37,7 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../images/favicon.png">
       <meta name="generator" content="mkdocs-0.17.4, mkdocs-material-2.9.2">
     
     
@@ -53,7 +53,7 @@
       
         
         
-        <meta name="theme-color" content="#3f51b5">
+        <meta name="theme-color" content="#7e57c2">
       
     
     
@@ -68,12 +68,14 @@
     
     <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
+      <link rel="stylesheet" href="../css/extra.css">
+    
     
   </head>
   
     
     
-    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
   
     <svg class="md-svg">
       <defs>
@@ -96,7 +98,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="https://universaldeeplinking.imaginationoverflow.com" title="Universal Deeplinking" class="md-header-nav__button md-logo">
           
-            <i class="md-icon"></i>
+            <img src="../images/logo.svg" width="24" height="24">
           
         </a>
       </div>
@@ -168,7 +170,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <span class="md-nav__button md-logo">
       
-        <i class="md-icon"></i>
+        <img src="../images/logo.svg" width="48" height="48">
       
     </span>
     Universal Deeplinking
@@ -424,6 +426,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../About/" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -667,7 +681,7 @@ If Sudoku Zenkai is activated with the following link:</p>
 <p>The configuration interface is under <strong>Window</strong> -&gt; <strong>ImaginationOverflow</strong> -&gt; <strong>Universal DeepLink Configuration</strong></p>
 <p><img alt="configuration.png" src="../imgs/3344962158-configuration.png" /></p>
 <p><img alt="configuration.png" src="../imgs/4123973642-configuration.png" /></p>
-<p>On some platforms, the operating system ask the player what app she wishes to use after clicking a custom URI, the <strong>Display Name</strong> allows you to configure what name will the OS show on that occasion.
+<p>On some platforms, the operating system asks the player what app she wishes to use after clicking a custom URI, the <strong>Display Name</strong> allows you to configure what name will the OS show on that occasion.
 The <strong>Steam App Id</strong> is for Steam only games, you can read about Steam integration on its <a href="../SteamIntegration/">section</a>. 
 The plugin allows you to configure the deep linking and domain association globally or per platform.</p>
 <h3 id="global-configuration">Global Configuration<a class="headerlink" href="#global-configuration" title="Permanent link">&para;</a></h3>
@@ -749,7 +763,7 @@ The plugin allows you to configure the deep linking and domain association globa
 <p>For more information on why you need to do this extra step check our <a href="../Internals/#mac">Inside the Plugin Section</a>.</p>
 <h3 id="linux-and-windows">Linux and Windows<a class="headerlink" href="#linux-and-windows" title="Permanent link">&para;</a></h3>
 <p>On Windows and Linux standalone builds, the Deep Linking is only configured when the game runs the first time, so even if the player has the game installed on his machine, if he didn't play at least one time, the Deep Linking connection won't activate the game.</p>
-<p>Windows and Linux builds also only allow players to start your game via a deep link, if the player clicks on a deep link after your game is already open the plugin won't react to this new activation.</p>
+<p>Windows and Linux builds also only allow players to start your game via a deep link if the player clicks on a deep link after your game is already open the plugin won't react to this new activation.</p>
 <p>For further details on why this happens, you can check our <a href="../Internals/#linux-and-windows">Inside the Plugin Section</a>.</p>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <ul>
@@ -826,13 +840,27 @@ The plugin allows you to configure the deep linking and domain association globa
   <div class="md-footer-social">
     <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
     
-      <a href="http://struct.cc" class="md-footer-social__link fa fa-globe"></a>
+      <a href="https://imaginationoverflow.com" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://github.com/squidfunk" class="md-footer-social__link fa fa-github-alt"></a>
+      <a href="https://twitter.com/ImaginationOver" class="md-footer-social__link fa fa-twitter"></a>
     
-      <a href="https://twitter.com/squidfunk" class="md-footer-social__link fa fa-twitter"></a>
+      <a href="https://www.facebook.com/imaginationoverflowpt/" class="md-footer-social__link fa fa-facebook"></a>
     
-      <a href="https://linkedin.com/in/squidfunk" class="md-footer-social__link fa fa-linkedin"></a>
+      <a href="https://store.steampowered.com/developer/imaginationoverflow" class="md-footer-social__link fa fa-steam"></a>
+    
+      <a href="https://play.google.com/store/apps/dev?id=4645635746246236605" class="md-footer-social__link fa fa-android"></a>
+    
+      <a href="https://itunes.apple.com/us/developer/diogo-cardoso/id1294879672" class="md-footer-social__link fa fa-apple"></a>
+    
+      <a href="https://www.microsoft.com/en-us/search/shop?q=ImaginationOverflow" class="md-footer-social__link fa fa-windows"></a>
+    
+      <a href="https://discord.gg/5TYmJtY" class="md-footer-social__link fa fa-support"></a>
+    
+      <a href="mailto:contact@imaginationoverflow.com" class="md-footer-social__link fa fa-mail-reply"></a>
+    
+      <a href="https://www.linkedin.com/in/diogocardoso89/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+      <a href="https://www.patreon.com/imaginationoverflow/posts" class="md-footer-social__link fa fa-feed"></a>
     
   </div>
 

@@ -37,7 +37,7 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../images/favicon.png">
       <meta name="generator" content="mkdocs-0.17.4, mkdocs-material-2.9.2">
     
     
@@ -53,7 +53,7 @@
       
         
         
-        <meta name="theme-color" content="#3f51b5">
+        <meta name="theme-color" content="#7e57c2">
       
     
     
@@ -68,12 +68,14 @@
     
     <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
+      <link rel="stylesheet" href="../css/extra.css">
+    
     
   </head>
   
     
     
-    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
   
     <svg class="md-svg">
       <defs>
@@ -96,7 +98,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="https://universaldeeplinking.imaginationoverflow.com" title="Universal Deeplinking" class="md-header-nav__button md-logo">
           
-            <i class="md-icon"></i>
+            <img src="../images/logo.svg" width="24" height="24">
           
         </a>
       </div>
@@ -168,7 +170,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <span class="md-nav__button md-logo">
       
-        <i class="md-icon"></i>
+        <img src="../images/logo.svg" width="48" height="48">
       
     </span>
     Universal Deeplinking
@@ -330,6 +332,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../About/" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -425,7 +439,7 @@
                 <p>On this section, we talk a little on how the plugin works on each platform and explain why it has some caveats on some platforms. </p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p><img alt="plugincontent.png" src="../imgs/plugincontent.png" /></p>
-<p>The plugin content can be found insider the folder <strong>Plugins/ImaginationOverflow/UniversalDeepLinking</strong>, making easy to install and update when required. </p>
+<p>The plugin content can be found inside the folder <strong>Plugins/ImaginationOverflow/UniversalDeepLinking</strong>, making easy to install and update when required. </p>
 <p>We included a simple <strong>Demo</strong> scene that allows you to test and play with the plugin before integrating it in your game.</p>
 <p>Inside the <strong>libs</strong> folder os all the required dlls in order for the plugin to work:</p>
 <ul>
@@ -437,16 +451,16 @@
 <p>The <strong>Tools</strong> folder contains external tools that the plugin requires in order to work correctly, right now, the only external tool we are using is <a href="https://github.com/alexzielenski/optool">optool</a>, required for MacOs builds.</p>
 <p>The plugin configurations are saved under <strong>Resources/ImaginationOverflow/UniversalDeepLink</strong>, facilitating the use of source control systems on development. This file is also required on some build targets at runtime, reason why it's directly under the Resources folder.</p>
 <h3 id="runtime">Runtime<a class="headerlink" href="#runtime" title="Permanent link">&para;</a></h3>
-<p>At runtime the plugin creates a single <strong>GameObject</strong> and adds it to your current scene, this GameObject purpose is to ensure that all activation callbacks are called inside Unity main thread as well as propagate the <strong>pause</strong> events of the game to the plugin. The later enables the plugin to refresh the activation data on some mobile platforms.</p>
+<p>At runtime the plugin creates a single <strong>GameObject</strong> and adds it to your current scene, this GameObject purpose is to ensure that all activation callbacks are called inside Unity main thread as well as propagate the <strong>pause</strong> events of the game to the plugin. The latter enables the plugin to refresh the activation data on some mobile platforms.</p>
 <h2 id="android">Android<a class="headerlink" href="#android" title="Permanent link">&para;</a></h2>
 <p>The plugin handles all manifest registrations when you make a build, the plugin <strong>doesn't</strong> override the default activity enabling it to work with the most used plugins in the Asset Store. The Deep Linking and Domain Association activation is checked everytime the game is opened or resumed.</p>
 <h2 id="ios">iOS<a class="headerlink" href="#ios" title="Permanent link">&para;</a></h2>
-<p>The iOS integration uses an static library <strong>libUniversalDeepLink.a</strong> in order to receive information about the app activation. Just like on Android the plugin handles all registrations on <strong>info.plist</strong> and <strong>entitlements</strong> files. The library included in the plugin notifies it everytime the game was opened via deep link or domain association activation.</p>
+<p>The iOS integration uses a static library <strong>libUniversalDeepLink.a</strong> in order to receive information about the app activation. Just like on Android the plugin handles all registrations on <strong>info.plist</strong> and <strong>entitlements</strong> files. The library included in the plugin notifies it everytime the game was opened via deep link or domain association activation.</p>
 <h2 id="windows-uwp-windows-store-games">Windows UWP (Windows Store Games)<a class="headerlink" href="#windows-uwp-windows-store-games" title="Permanent link">&para;</a></h2>
 <p>Just like the previous mobile platforms, the plugin automatically configures the <strong>Package.appxmanifest</strong> file with your configuration. </p>
 <p>In order for the plugin to work it edits the OnActivated event under <em>App.xaml.cs</em>, <em>App.xaml.cpp</em> or <em>App.cpp</em> depending on what <strong>Build Type</strong> (Xaml or D3D) and <strong>Scripting Backend</strong> (.NET or IL2CPP) you configure. The plugin should also work on <strong>Xbox UWP</strong> games but it was impossible to test on an actual console in order to get confirmation.</p>
 <h2 id="linux-and-windows">Linux and Windows<a class="headerlink" href="#linux-and-windows" title="Permanent link">&para;</a></h2>
-<p>Linux the deep link registration is done the <strong>first time the player opens the game</strong>. To accomplish this the plugin creates a <a href="https://developer.gnome.org/integration-guide/stable/desktop-files.html.en">Desktop File</a> on the player machine, enabling the operating system to setup the game as a target of a custom protocol. </p>
+<p>Linux the deep link registration is done the <strong>first time the player opens the game</strong>. To accomplish this the plugin creates a <a href="https://developer.gnome.org/integration-guide/stable/desktop-files.html.en">Desktop File</a> on the player machine, enabling the operating system to set up the game as a target of a custom protocol. </p>
 <p>Windows, the game writes in the registry the information necessary to enable the OS to open the game every time the player clicks on a configured deep link URI.</p>
 <p>The protocol registration is also done everytime the <strong><a href="https://docs.unity3d.com/ScriptReference/Application-version.html">Application.version</a></strong> is changed, enabling you to change the configuration with an update. </p>
 <p>If the game build is for Steam, the plugin configures Steam to be the target of your custom URI instead of the game (this is done to work around DRM) but configures Steam to launch your game with the Uri that opened steam.</p>
@@ -528,13 +542,27 @@
   <div class="md-footer-social">
     <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
     
-      <a href="http://struct.cc" class="md-footer-social__link fa fa-globe"></a>
+      <a href="https://imaginationoverflow.com" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://github.com/squidfunk" class="md-footer-social__link fa fa-github-alt"></a>
+      <a href="https://twitter.com/ImaginationOver" class="md-footer-social__link fa fa-twitter"></a>
     
-      <a href="https://twitter.com/squidfunk" class="md-footer-social__link fa fa-twitter"></a>
+      <a href="https://www.facebook.com/imaginationoverflowpt/" class="md-footer-social__link fa fa-facebook"></a>
     
-      <a href="https://linkedin.com/in/squidfunk" class="md-footer-social__link fa fa-linkedin"></a>
+      <a href="https://store.steampowered.com/developer/imaginationoverflow" class="md-footer-social__link fa fa-steam"></a>
+    
+      <a href="https://play.google.com/store/apps/dev?id=4645635746246236605" class="md-footer-social__link fa fa-android"></a>
+    
+      <a href="https://itunes.apple.com/us/developer/diogo-cardoso/id1294879672" class="md-footer-social__link fa fa-apple"></a>
+    
+      <a href="https://www.microsoft.com/en-us/search/shop?q=ImaginationOverflow" class="md-footer-social__link fa fa-windows"></a>
+    
+      <a href="https://discord.gg/5TYmJtY" class="md-footer-social__link fa fa-support"></a>
+    
+      <a href="mailto:contact@imaginationoverflow.com" class="md-footer-social__link fa fa-mail-reply"></a>
+    
+      <a href="https://www.linkedin.com/in/diogocardoso89/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+      <a href="https://www.patreon.com/imaginationoverflow/posts" class="md-footer-social__link fa fa-feed"></a>
     
   </div>
 
