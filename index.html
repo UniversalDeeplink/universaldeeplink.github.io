@@ -71,12 +71,12 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#about">About</a></li>
+                        <li><a href="./docs">Documentation</a></li>
                         <li><a href="#feature">Features</a></li>
-                        <li><a href="#screenshot">Screenshot</a></li>
-                        <li><a href="#team">Tema</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#contact">Contact</a></li>
+						 <li><a href="#showcase">Showcase</a></li>
+                        <li><a href="https://www.patreon.com/imaginationoverflow/posts?">Blog</a></li>
+                        <li><a href="mailto:contact@imaginationoverflow.com">Contact</a></li>
+                        <li><a href="https://discord.gg/ZV7vzNV">Support</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>
@@ -89,13 +89,13 @@
         		<div class="row">
         			<div class="col-md-7">
         				<div class="b_nine_text">
-        					<h3> <span>Universal Deep Linking Plugin</span> </h3>
-        					<h5 >Link players to your games. <br/> 
+        					<h3 ><b><span style="color:#ffffff">Universal Deep Linking </span></b> </h3>
+        					<h5 style="color:#cccccc">Link players to your games. <br/> 
                                 Available for:
                                
                             </h5>
 
-                            <div class="available_platforms">
+                            <div class="available_platforms" style="color:#cccccc">
                                 <i class="icofont_big icofont-brand-apple"></i> 
                                 <i class="icofont_big icofont-brand-android-robot"></i>  
                                 <i class="icofont_big icofont-brand-windows"></i> 
@@ -105,12 +105,12 @@
 
                             </div>
                            
-        					<a class="border_btn" href="#"><i class="icofont icofont-download-alt"></i> Get This Plugin in Assets Store Unity</a>
+        					<a class="border_btn" href="#"><i class="icofont icofont-download-alt"></i>Download from Unity Asset Store</a>
         				</div>
         			</div>
         			<div class="col-md-5">
         				<div class="b_nine_image">
-        					<img src="img/phones/banner-phone.png" alt="">
+        					<img src="img/gifs/maingif.gif" alt="">
         				</div>
         			</div>
         		</div>
@@ -122,26 +122,47 @@
         <section class="about_nine_area" id="about">
             <div class="container">
                 <div class="nine_title">
-                    <h2>Universal Deep Link Plugin for Unity</h2>
+                    <h2>Universal Deep Linking Plugin for Unity</h2>
                 </div>
                 <div class="row">
+				<div class="container">
                     <div class="ab_nine_text">
-                            <h4>Its has never been so easy link player with your games.</h4>
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
-                            <a href="#"><img src="img/icon/apple.jpg" alt=""></a>
-                            <a href="#"><img src="img/icon/google.jpg" alt=""></a>
+                            <h4>Its has never been so easy link players with your games.</h4>
+                            <p>ImaginationOverflow <b>Universal Deeplinking</b> plugin enables your Unity projects to be opened using <b>deep links</b> and/or <b>web links</b>, enabling your projects another way to interact with your users.</p>
+                            
+                        
                      </div>
+					 </div>
                 </div>
+				 <div class="ab_nine_text">
+				 <p>The plugin <b>integration</b> is as simple as registering a callback to an event. <br/>
+				 </p>
+				 </div>
                  <div class="row">
-                    <pre><code class="language-csharp">public class DeeplinkingExample : MonoBehaviour
+				
+				 
+                    <pre style="width:100%"><code class="language-csharp" >public class DeeplinkingExample : MonoBehaviour
 {
     void Start()
     {
-        DeepLinkManager.Instance.LinkActivated += Instance_LinkActivated;
-    } 
+       DeepLinkManager.Instance.LinkActivated += Instance_LinkActivated;
+    }
+	private void Instance_LinkActivated(LinkActivation la)
+	{
+		//
+		//  my activation code
+		//
+	}	
 }</code></pre>
                 </div>
+				  <div class="ab_nine_text" style="margin-top:12px;margin-bottom:6px">
+				 <p> The configuration is made on a simple built-in User Interface, where you can define all the deep link and domain Uris that you wish to support.<br/>
+				 </p>
+				 </div>
+				  <div class="row">
+				  
+				  <img src="./docs/imgs/2376466814-configuration.png"/>
+				  </div>
             </div>
         </section>
         <!--================End About Nine Area =================-->
@@ -152,70 +173,68 @@
           <section class="about_nine_area" id="about">
             
             <div class="container">
+                    <h2>Supported Platforms</h2>
                 <div class="nine_title">
-                    <h2>Support</h2>
                 </div>
                 <div class="row">
                    <table class="table">
                         <thead class="thead-dark">
                           <tr>
-                            <th scope="col">Features</th>
-                            <th scope="col">iOS</th>
-                            <th scope="col">Android</th>
-                            <th scope="col">UWP</th>
-                            <th scope="col">Windows</th>
-                            <th scope="col">Mac</th>
-                            <th scope="col">Linux</th>
-                            <th scope="col">Steam</th>
+                            <th scope="col">Platform</th>
+                            <th scope="col">Deep Linking</th>
+                            <th scope="col">Domain Association</th>
                           </tr>
                         </thead>
                         <tbody>
+						 <tr>
+                            <th scope="row">Android</th>
+                            <td><b class="fa fa-check"></b></td>
+                            <td><b class="fa fa-check"></b></td>
+                          </tr>
                           <tr>
                             <th scope="row">iOS</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <td><b class="fa fa-check"></b>*</td>
+                            <td><b class="fa fa-check"></b>*</td>
                           </tr>
                           <tr>
-                            <th scope="row">Android</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
+                            <th scope="row">Windows Store</th>
+                            <td><b class="fa fa-check"></b></td>
+                            <td><b class="fa fa-check"></b></td>
+                          </tr>
+						   <tr>
+                            <th scope="row">Linux Standalone</th>
+                            <td><b class="fa fa-check"></b></td>
+							<td/>
+                          </tr>
+						  
+						    <tr>
+                            <th scope="row">MacOs Standalone</th>
+                            <td><b class="fa fa-check"></b>*</td>
+							<td/>
                           </tr>
                           <tr>
-                            <th scope="row">UWP</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
+                            <th scope="row">Windows Standalone</th>
+                            <td><b class="fa fa-check"></b></td>
+							<td/>
                           </tr>
+                         
+                        
                           <tr>
-                            <th scope="row">Windows</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Linux</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">MAC</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Steam</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
+                            <th scope="row">Steam (Linux, Windows, MacOs*)</th>
+                            <td><b class="fa fa-check"></b></td>
+							<td/>
                           </tr>
                         </tbody>
                     </table>
                 </div>
-                
+                 <div class="row">
+				<div class="container">
+                    <div class="ab_nine_text">
+                            <p style="font-size:12px">(*) requires MacOs</p>
+                        
+                     </div>
+					 </div>
+                </div>
         </section>
         <!--================End Support Area =================-->
 
@@ -232,14 +251,14 @@
                                     <i class="fa fa-cloud-download"></i>
                                 </div>
                                 <a href="/" onclick="return false;"><h4>Incentivized Installs</h4></a>
-                                <p>The Developers can use deep linking to incentivize game installs to get more quantifiable acquisition metrics than just rewarding invites.</p>
+                                <p>Use Deep Linking to incentivize game installs to get more quantifiable acquisition metrics than just rewarding invites.</p>
                             </div>
                             <div class="app_feature_item">
                                <div class="round_icon">
                                     <i class="fa fa-gift"></i>
                                 </div>
-                                <a href="/" onclick="return false;"><h4>Promote In-App Special Offers.</h4></a>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered.</p>
+                                <a href="/" onclick="return false;"><h4>Offer in-app content</h4></a>
+                                <p>You can use deep links to unlock content inside your game.</p>
                             </div>
                         </div>
                     </div>
@@ -250,40 +269,109 @@
                         </div>
                         <div class="app_feature_item app_middle">
                            <div class="round_icon">
-                                <i class="fa fa-bar-chart"></i>
+                                <i class="fa fa-share-alt"></i>
                             </div>
-                            <a href="/" onclick="return false;"><h4>Optimize Ads</h4></a>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration .</p>
+                            <a href="/" onclick="return false;"><h4>Share Content</h4></a>
+                            <p>Share level seeds, gifts or room numbers between players in a seamless way.</p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="app_feature_item_inner left_feature">
                             <div class="app_feature_item">
                                 <div class="round_icon">
-                                    <i class="icofont icofont-coins"></i>
+                                    <i class="fa fa-user"></i>
                                 </div>
-                                <a href="/" onclick="return false;"><h4>Increase Retention</h4></a>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered.</p>
+                                <a href="/" onclick="return false;"><h4>User retention</h4></a>
+                                <p>Games with deep links have an higher user retention overall. </p>
                             </div>
                             <div class="app_feature_item">
                                <div class="round_icon">
                                     <i class="icofont icofont-chart-histogram-alt"></i>
                                 </div>
-                                <a href="/" onclick="return false;"><h4>Boost Acquisition</h4></a>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered.</p>
+                                <a href="/" onclick="return false;"><h4>App Discoverability</h4></a>
+                                <p>Search engines index mobile app deep links, improving the chances of new users finding out about your game..</p>
                             </div>
+							
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                     <a class="red_btn" href="#"><i class="icofont icofont-download-alt"></i> Get This Plugin in Assets Store Unity</a>
                 </div>
             </div>
         </section>
 
+		<section class="" id="showcase" style="padding-bottom:48px">
+			 <div class="container">
+                 <div class="nine_title">
+                    <h2>Showcase</h2>
+                </div>
+				<div >
+					<div>
+						<img src="./docs/imgs/szenkai.png" width="150" height="150" style="float:left;margin-right:12px"/>
+						
+							<h4 style="padding-top:24px">Sudoku Zenkai</h4>
+							<span>Sudoku Zenkai is a game for anyone from beginning to advanced players.
+							It brings a new dimension to sudoku - you can solve puzzles with your friends, wherever they are!
+							</span>
+							<br/>
+							<a href="https://play.google.com/store/apps/details?id=com.imaginationoverflow.sudokuzenkai">Android</a> | <a href="https://itunes.apple.com/us/app/sudoku-zenkai/id1350745084">iOS</a> | <a href="https://www.microsoft.com/store/apps/9ND85HBDBNXZ">Windows Store</a> | <a href="https://store.steampowered.com/app/809850">Steam</a> | <a href="sudokuzenkai://dailychallenge?q=ZMORw4TDhcOKw4fDisOKw43DhcOFw4TDiMOEw4TDhMOEw4TDhMOEw4TClA==">Deeplink</a>
+					</div>
+					<div style="clear:left;padding-top:12px">
+						<img src="./docs/imgs/bunny.png" width="150" height="150" style="float:left;margin-right:12px"/>
+						
+							<h4 style="padding-top:12px">Super Bunny Laser Spikes</h4>
+							<span>Super Bunny Laser Spikes is a vertical jumper where you control a Bunny that is leaping for it’s life! You have to dodge enemies, eat carrots in order to unlock all the awesome Power Ups and Gizmos available.
+
+The game is made with a beautiful hand-drawn art with an incredible color pallet and full of different areas to see and surpass. The enemies and sections that you have to conquer are randomly picked so that each run will be different.
 
 
-      
+							</span>
+							<br/>
+							<a href="https://play.google.com/store/apps/details?id=com.imaginationoverflow.superbunnylaserspikes">Android</a> | <a href="https://itunes.apple.com/us/app/super-bunny-laser-spikes/id1356606054?ls=1&mt=8">iOS</a> | <a href="https://www.microsoft.com/store/apps/9P970Z51MJMK">Windows Store</a> | <a href="superbunnylaserspikes://reward?id=e5852a3f-7479-4c89-b6e7-807f44ef647e">Deeplink</a>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+
+       <footer class="nine_footer" style="background:#000000">
+            <div class="nine_copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 mr-auto">
+                            <div class="footer-logo">
+								<a href="https://imaginationoverflow.com">
+									<img src="img/iologo.png" width="100" height="100" alt="footer-logo">
+								</a>
+                            </div>
+        
+                        </div>
+                        <div class="col-lg-6 text-lg-right nine_footer_social">
+                        <ul class="social-icons list-inline">
+                           
+                            <li class="list-inline-item nine_footer_link">
+                              <a href="https://imaginationoverflow.com/"> <i class="fa fa-info" style="color:#ffffff"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                              <a href="https://facebook.com/imaginationoverflowpt/"><i class="fa fa-facebook" style="color:#ffffff"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                              <a href="https://twitter.com/ImaginationOver"><i class="fa fa-twitter" style="color:#ffffff"></i></a>
+                            </li>
+							 <li class="list-inline-item">
+                              <a href="./docs"><i class="fa fa-file-text" style="color:#ffffff"></i></a>
+                            </li>
+                        </ul>
+                        <!-- Footer Links -->
+                        <ul class="footer-links list-inline">
+                          <li class="list-inline-item">
+                            <a href="#" style="color:#ffffff">BACK TO TOP</a>
+                          </li>
+                        </ul>
+        </div>
+      </div>
+                    
+                </div>
+            </div>
+        </footer>
         
 
 
