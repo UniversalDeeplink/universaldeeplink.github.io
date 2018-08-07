@@ -7,7 +7,7 @@
         
         <link rel="icon" href="img/fav-icon.png" type="image/x-icon" />
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Universal Deep Link Plugin</title>
+        <title>Universal Deep Linking Plugin</title>
 
         <!-- Icon css link -->
         <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -32,6 +32,32 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/responsive.css" rel="stylesheet">
         <link href="css/prism.css" rel="stylesheet" />
+		
+<!-- Search Engine -->
+<meta name="description" content="ImaginationOverflow Universal Deep Linking plugin allows your Unity projects to be opened via Deep Links and Web Links in a seamless way.">
+<meta name="image" content="https://universaldeeplinking.imaginationoverflow.com/docs/images/logob.png">
+<!-- Schema.org for Google -->
+<meta itemprop="name" content="Universal Deep Linking">
+<meta itemprop="description" content="ImaginationOverflow Universal Deep Linking plugin allows your Unity projects to be opened via Deep Links and Web Links in a seamless way.">
+<meta itemprop="image" content="https://universaldeeplinking.imaginationoverflow.com/docs/images/logob.png">
+<!-- Mobile App for iOS & Android -->
+<!-- Twitter -->
+<meta name="twitter:card" content="app">
+<meta name="twitter:title" content="Universal Deep Linking">
+<meta name="twitter:description" content="ImaginationOverflow Universal Deep Linking plugin allows your Unity projects to be opened via Deep Links and Web Links in a seamless way.">
+<meta name="twitter:site" content="@imaginationover">
+<meta name="twitter:creator" content="@dvd_pt">
+<meta name="twitter:image:src" content="https://universaldeeplinking.imaginationoverflow.com/docs/images/logob.png">
+<!-- Twitter - Mobile App (iOS & Android) -->
+
+<meta name="twitter:text:title" content="Super Bunny Laser Spikes">
+<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+<meta name="og:title" content="Universal Deep Linking">
+<meta name="og:description" content="ImaginationOverflow Universal Deep Linking plugin allows your Unity projects to be opened via Deep Links and Web Links in a seamless way.">
+<meta name="og:image" content="https://universaldeeplinking.imaginationoverflow.com/docs/images/logob.png">
+<meta name="og:url" content="https://universaldeeplinking.imaginationoverflow.com">
+<meta name="og:site_name" content="Universal Deep Linking">
+<meta name="og:type" content="website">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -90,12 +116,12 @@
         			<div class="col-md-7">
         				<div class="b_nine_text">
         					<h3 ><b><span style="color:#ffffff">Universal Deep Linking </span></b> </h3>
-        					<h5 style="color:#cccccc">Link players to your games. <br/> 
+        					<h5 style="color:#cccccc">Deep Link your players to your games. <br/> 
                                 Available for:
                                
                             </h5>
 
-                            <div class="available_platforms" style="color:#cccccc">
+                            <div class="available_platforms" style="color:white">
                                 <i class="icofont_big icofont-brand-apple"></i> 
                                 <i class="icofont_big icofont-brand-android-robot"></i>  
                                 <i class="icofont_big icofont-brand-windows"></i> 
@@ -105,7 +131,7 @@
 
                             </div>
                            
-        					<a class="border_btn" href="#"><i class="icofont icofont-download-alt"></i>Download from Unity Asset Store</a>
+        					<a class="border_btn" href="https://assetstore.unity.com/packages/slug/125172"><i class="icofont icofont-download-alt"></i>Download from Unity Asset Store</a>
         				</div>
         			</div>
         			<div class="col-md-5">
@@ -128,14 +154,14 @@
 				<div class="container">
                     <div class="ab_nine_text">
                             <h4>Its has never been so easy link players with your games.</h4>
-                            <p>ImaginationOverflow <b>Universal Deeplinking</b> plugin enables your Unity projects to be opened using <b>deep links</b> and/or <b>web links</b>, enabling your projects another way to interact with your users.</p>
+                            <p>ImaginationOverflow <b>Universal Deeplinking</b> plugin enables your Unity projects to be opened using <b>deep links</b> and/or <b>web links</b>, enabling your projects another way to interact with your users. <br/> The plugin <b>automatically</b> configures deep linking and domain association on the target platform on build, making its usage simple and quick.</p> 
                             
                         
                      </div>
 					 </div>
                 </div>
 				 <div class="ab_nine_text">
-				 <p>The plugin <b>integration</b> is as simple as registering a callback to an event. <br/>
+				 <p><b>Integration</b> is as simple as registering a callback to an event. <br/>
 				 </p>
 				 </div>
                  <div class="row">
@@ -156,12 +182,21 @@
 }</code></pre>
                 </div>
 				  <div class="ab_nine_text" style="margin-top:12px;margin-bottom:6px">
-				 <p> The configuration is made on a simple built-in User Interface, where you can define all the deep link and domain Uris that you wish to support.<br/>
-				 </p>
+					 <p> The configuration is made on a simple built-in User Interface, where you can define all the deep link and domain Uris that you wish to support.<br/> You can configure the plugin globally, where all your builds will have the same configurations or configure each platform to have a different configuration.
+					 </p>
 				 </div>
 				  <div class="row">
 				  
 				  <img src="./docs/imgs/2376466814-configuration.png"/>
+				  </div>
+				  
+				  <div class="ab_nine_text" style="margin-top:12px;margin-bottom:6px">
+					 <p> The plugin also contains a debug feature where you can test your integration without deploying to an actual device.
+					 </p>
+				 </div>
+				  <div class="row">
+				  
+				  <img src="./docs/imgs/1238534982-configuration.png"/>
 				  </div>
             </div>
         </section>
@@ -173,6 +208,7 @@
           <section class="about_nine_area" id="about">
             
             <div class="container">
+			
                     <h2>Supported Platforms</h2>
                 <div class="nine_title">
                 </div>
@@ -314,7 +350,7 @@
 							<br/>
 							<a href="https://play.google.com/store/apps/details?id=com.imaginationoverflow.sudokuzenkai">Android</a> | <a href="https://itunes.apple.com/us/app/sudoku-zenkai/id1350745084">iOS</a> | <a href="https://www.microsoft.com/store/apps/9ND85HBDBNXZ">Windows Store</a> | <a href="https://store.steampowered.com/app/809850">Steam</a> | <a href="sudokuzenkai://dailychallenge?q=ZMORw4TDhcOKw4fDisOKw43DhcOFw4TDiMOEw4TDhMOEw4TDhMOEw4TClA==">Deeplink</a>
 					</div>
-					<div style="clear:left;padding-top:12px">
+					<div style="clear:left;padding-top:24px">
 						<img src="./docs/imgs/bunny.png" width="150" height="150" style="float:left;margin-right:12px"/>
 						
 							<h4 style="padding-top:12px">Super Bunny Laser Spikes</h4>
@@ -329,6 +365,14 @@ The game is made with a beautiful hand-drawn art with an incredible color pallet
 					</div>
 					
 				</div>
+			</div>
+		</section>
+		<section class="" id="downloadnow" style="padding-bottom:48px">
+			 <div class="container">
+                 <div class="nine_title">
+                    <h2>Download</h2>
+                </div>
+					<a class="order_btn" href="https://assetstore.unity.com/packages/slug/125172" style="width:100%;background:#BB3F6E"><i class="icofont icofont-download-alt" style="margin-right:10px"></i>Download from Unity Asset Store</a>
 			</div>
 		</section>
 
