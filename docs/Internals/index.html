@@ -280,8 +280,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ios" title="iOS" class="md-nav__link">
-    iOS
+  <a href="#iostvos" title="iOS/tvOS" class="md-nav__link">
+    iOS/tvOS
   </a>
   
 </li>
@@ -388,8 +388,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ios" title="iOS" class="md-nav__link">
-    iOS
+  <a href="#iostvos" title="iOS/tvOS" class="md-nav__link">
+    iOS/tvOS
   </a>
   
 </li>
@@ -452,7 +452,7 @@
 <p>At runtime the plugin creates a single <strong>GameObject</strong> and adds it to your current scene, this GameObject purpose is to ensure that all activation callbacks are called inside Unity main thread as well as propagate the <strong>pause</strong> events of the game to the plugin. The latter enables the plugin to refresh the activation data on some mobile platforms.</p>
 <h2 id="android">Android<a class="headerlink" href="#android" title="Permanent link">&para;</a></h2>
 <p>The plugin handles all manifest registrations when you make a build, the plugin <strong>doesn't</strong> override the default activity enabling it to work with the most used plugins in the Asset Store. The Deep Linking and Domain Association activation is checked everytime the game is opened or resumed.</p>
-<h2 id="ios">iOS<a class="headerlink" href="#ios" title="Permanent link">&para;</a></h2>
+<h2 id="iostvos">iOS/tvOS<a class="headerlink" href="#iostvos" title="Permanent link">&para;</a></h2>
 <p>The iOS integration uses a static library <strong>libUniversalDeepLink.a</strong> in order to receive information about the app activation. Just like on Android the plugin handles all registrations on <strong>info.plist</strong> and <strong>entitlements</strong> files. The library included in the plugin notifies it everytime the game was opened via deep link or domain association activation.</p>
 <h2 id="windows-uwp-windows-store-games">Windows UWP (Windows Store Games)<a class="headerlink" href="#windows-uwp-windows-store-games" title="Permanent link">&para;</a></h2>
 <p>Just like the previous mobile platforms, the plugin automatically configures the <strong>Package.appxmanifest</strong> file with your configuration. </p>
