@@ -298,6 +298,19 @@
     Linux and Windows
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standalone-activation-after-launch" title="Standalone activation after launch" class="md-nav__link">
+    Standalone activation after launch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -406,6 +419,19 @@
     Linux and Windows
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standalone-activation-after-launch" title="Standalone activation after launch" class="md-nav__link">
+    Standalone activation after launch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -458,11 +484,67 @@
 <p>Just like the previous mobile platforms, the plugin automatically configures the <strong>Package.appxmanifest</strong> file with your configuration. </p>
 <p>In order for the plugin to work it edits the OnActivated event under <em>App.xaml.cs</em>, <em>App.xaml.cpp</em> or <em>App.cpp</em> depending on what <strong>Build Type</strong> (Xaml or D3D) and <strong>Scripting Backend</strong> (.NET or IL2CPP) you configure. The plugin should also work on <strong>Xbox UWP</strong> games but it was impossible to test on an actual console in order to get confirmation.</p>
 <h2 id="linux-and-windows">Linux and Windows<a class="headerlink" href="#linux-and-windows" title="Permanent link">&para;</a></h2>
-<p>Linux the deep link registration is done the <strong>first time the player opens the game</strong>. To accomplish this the plugin creates a <a href="https://developer.gnome.org/integration-guide/stable/desktop-files.html.en">Desktop File</a> on the player machine, enabling the operating system to set up the game as a target of a custom protocol. </p>
-<p>Windows, the game writes in the registry the information necessary to enable the OS to open the game every time the player clicks on a configured deep link URI.</p>
+<p>In <strong>Linux</strong> the deep link registration is done the <strong>first time the player opens the game</strong>. To accomplish this the plugin creates a <a href="https://developer.gnome.org/integration-guide/stable/desktop-files.html.en">Desktop File</a> on the player machine, enabling the operating system to set up the game as a target of a custom protocol. </p>
+<p>On <strong>Windows</strong>, the game writes in the registry the information necessary to enable the OS to open the game every time the player clicks on a configured deep link URI.</p>
 <p>The protocol registration is also done everytime the <strong><a href="https://docs.unity3d.com/ScriptReference/Application-version.html">Application.version</a></strong> is changed, enabling you to change the configuration with an update. </p>
 <p>If the game build is for Steam, the plugin configures Steam to be the target of your custom URI instead of the game (this is done to work around DRM) but configures Steam to launch your game with the Uri that opened steam.</p>
-<p>Linux and Windows builds (Steam or Standalone) can't be activated via a Deep Link <strong>after the game is already running.</strong> This is because the link activation information is passed via argument on the <strong>main</strong> function, making it impossible (right now at least) to get information of the activation link after the game is already running.</p>
+<p>Linux and Windows builds (Steam or Standalone) can't be activated via a Deep Link <strong>after the game is already running.</strong> This is because the link activation information is passed via argument on the <strong>main</strong> function, making it impossible to get information of the activation link after the game is already running. To work around this issue check the section below</p>
+<h3 id="standalone-activation-after-launch">Standalone activation after launch<a class="headerlink" href="#standalone-activation-after-launch" title="Permanent link">&para;</a></h3>
+<p>Although not included with the plugin, it's possible to work around the activation issue. In order to do that it's required that another application (Launcher application) is registered as the target for the deep link and that activation is responsible to launch or notify your app or game. So instead of the normal activation flow:</p>
+<p><img alt="normally.png" src="../images/normally.png" /></p>
+<p>It will run like the following</p>
+<p><img alt="launcher.png" src="../images/launcher.png" /></p>
+<p>The Launcher application is not included in the plugin for security and liability reasons, so you would need to develop it yourself and include it on your game/app final package. 
+We do however have an API for enabling this kind of behavior.</p>
+<p>First off, you would need to register the launcher application instead of your app/game as the target application for the plugin, in order to facilitate that we enable you to override what we register as the deep link target, your app/game executable or another application.</p>
+<p>In order to do that, before you register your callback on the <em>LinkActivated</em> event you need to set the <strong>DeferredExePath</strong> field with the full path of the application.</p>
+<div class="codehilite"><pre><span></span><span class="cp">#if UNITY_STANDALONE_LINUX || UNITY_STANDALONE_WIN</span>
+    <span class="n">ImaginationOverflow</span><span class="p">.</span><span class="n">UniversalDeepLinking</span><span class="p">.</span><span class="n">LinkProviderFactory</span><span class="p">.</span><span class="n">DeferredExePath</span> <span class="p">=</span> <span class="s">&quot;&lt;Launcher application full path&gt;&quot;</span><span class="p">;</span>
+<span class="cp">#endif</span>
+    <span class="n">ImaginationOverflow</span><span class="p">.</span><span class="n">UniversalDeepLinking</span><span class="p">.</span><span class="n">DeepLinkManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">LinkActivated</span> <span class="p">+=</span> <span class="n">Instance_LinkActivated</span><span class="p">;</span>
+</pre></div>
+
+<p>Then you need to implement a bridge between the Launcher application and your app/game, for this situation any common <a href="https://en.wikipedia.org/wiki/Inter-process_communication">Inter Process Communication</a> tools or APIs can be used, you can as an example use, <a href="https://docs.unity3d.com/ScriptReference/Windows.File.html">Files</a>, <a href="https://docs.microsoft.com/en-us/dotnet/framework/network-programming/sockets">Sockets</a> or <a href="https://docs.microsoft.com/en-us/dotnet/api/system.io.pipes.namedpipeclientstream?view=netframework-4.8">Pipes</a>.</p>
+<p>Using the file polling as an example, the launcher application would write the <strong>activation URI</strong> on a file that both the launcher and your app/game knows. The game would then
+on set intervals check if a specific file was changed when it was changed the app/game would read it in order to get the activation URI. After getting the URI the app/game could use our manual trigger API in order to activate the <em>LinkActivated</em> event:</p>
+<div class="codehilite"><pre><span></span><span class="k">while</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(&lt;</span><span class="n">file</span> <span class="n">was</span> <span class="n">modified</span><span class="p">&gt;)</span>
+    <span class="p">{</span>
+        <span class="kt">string</span> <span class="n">fileContent</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="n">ReadAllText</span><span class="p">(&lt;</span><span class="n">file</span> <span class="n">path</span><span class="p">&gt;);</span>
+        <span class="n">ImaginationOverflow</span><span class="p">.</span><span class="n">UniversalDeepLinking</span><span class="p">.</span><span class="n">DeepLinkManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">ManuallyTriggerDeepLink</span><span class="p">(</span><span class="n">fileContent</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>The launcher application needs to check if the app/game is open or not before deciding which method it would use in order to send the activation data to it. If the application is not running, you can simply launch it and pass the <strong>activation URI</strong> as an argument. If the app/game is already running, you need to IPC in order to send information to the running app/game. Using the file polling example again, the launcher application code can be something like:</p>
+<div class="codehilite"><pre><span></span><span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">Length</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+
+    <span class="c1">//  Get the activation uri.</span>
+    <span class="kt">var</span> <span class="n">uri</span> <span class="p">=</span> <span class="n">args</span><span class="p">[</span><span class="m">1</span><span class="p">];</span>
+
+    <span class="c1">//  Check if your app/game is running</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">Process</span><span class="p">.</span><span class="n">GetProcessesByName</span><span class="p">(</span><span class="s">&quot;&lt;your app/game&gt;&quot;</span><span class="p">).</span><span class="n">Length</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//if not simply launch it with the activationUri as argument</span>
+        <span class="n">Process</span> <span class="n">p</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Process</span><span class="p">();</span>
+        <span class="n">p</span><span class="p">.</span><span class="n">StartInfo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ProcessStartInfo</span><span class="p">(</span><span class="s">&quot;&lt;path to app/game executable&gt;&quot;</span><span class="p">,</span> <span class="n">uri</span><span class="p">);</span>
+        <span class="n">p</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>   
+        <span class="c1">//</span>
+        <span class="c1">//  Write in the share file the uri so that the app/game can extract it</span>
+        <span class="c1">//</span>
+        <span class="n">File</span><span class="p">.</span><span class="n">WriteAllText</span><span class="p">(</span><span class="s">&quot;&lt;Path to shared file between launcher and game&gt;&quot;</span><span class="p">,</span> <span class="n">uri</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+
 <h2 id="mac">Mac<a class="headerlink" href="#mac" title="Permanent link">&para;</a></h2>
 <p>All manifest registrations are handled by the plugin, the deep linking activation is deferred from our library into the game as it happens, so MacOs builds won't have the caveats that Windows and Linux have.</p>
 <p>In order to support Deep Linking we had to make a <strong>library</strong> (<em>UniversalDeepLink.framework</em>) that would intercept the activation events of the application itself since Unity doesn't allow the plugin to automatically link a library on the build process it must be done after the build. To make that possible the plugin includes the tool <strong>optool</strong>. </p>
@@ -526,7 +608,7 @@
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2018 ImaginationOverflow
+            Copyright &copy; 2019 ImaginationOverflow
           </div>
         
         powered by
