@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Universal Deep Link",
+    "short_name": "Universal Deep Link",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
