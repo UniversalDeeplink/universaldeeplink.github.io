@@ -12,7 +12,7 @@
         <meta name="author" content="ImaginationOverflow - Ana Correia & Diogo Cardoso">
       
       
-        <link rel="canonical" href="https://universaldeeplinking.imaginationoverflow.com/DomainAssociation/">
+        <link rel="canonical" href="https://universaldeeplinking.imaginationoverflow.com/docs/DomainAssociation/">
       
       
         <link rel="prev" href="../GettingStarted/">
@@ -449,7 +449,7 @@
 <li>Save the changes</li>
 </ol>
 <p>After you added the Associated Domain service, your page should look like the following:</p>
-<p><img alt="appid.png" src="/imgs/3879749644-appid.png" /></p>
+<p><img alt="appid.png" src="../imgs/3879749644-appid.png" /></p>
 <p>From the above image, set-aside the <strong>Prefix</strong> and the <strong>ID</strong>. In Sudoku Zenkai case the Prefix is <em>5DVD99WQGR</em> and the ID <em>com.imaginationoverflow.com.sudokuzenkai</em>.</p>
 <p>Now you need to create a json file named <strong>apple-app-site-association</strong> (no extension) with the following contents:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -479,14 +479,14 @@ https://&lt;your_domain&gt;/apple-app-site-association
 <h2 id="android-app-links">Android - App Links<a class="headerlink" href="#android-app-links" title="Permanent link">&para;</a></h2>
 <p>The first thing you need to configure the Domain Association is a <strong>package name</strong>, to configure that on your Unity Project click on <strong>Edit</strong> -&gt; <strong>Project Settings</strong> -&gt; <strong>Player</strong>.
 In the Android options you will find the <strong>Package Name</strong> setting: </p>
-<p><img alt="droidpackagename.png" src="/imgs/1991478345-droidpackagename.png" /></p>
+<p><img alt="droidpackagename.png" src="../imgs/1991478345-droidpackagename.png" /></p>
 <p>For more info on how to choose a package name checkout <a href="https://developer.android.com/studio/build/application-id">Google Documentation</a>.</p>
 <p>The second thing you need to have is a keystore, you need to sign your game before submitting it to the store, you can get more info on <a href="https://developer.android.com/studio/publish/app-signing">Google documentation</a> about this topic.</p>
 <p>After creating your keystore, you need to get <strong>SHA-256 certificate fingerprint</strong>, to do that just run the following command on your terminal (note the keytool comes with the Java SDK) :</p>
 <div class="highlight"><pre><span></span><code>keytool<span class="w"> </span>-list<span class="w"> </span>-v<span class="w"> </span>-keystore<span class="w"> </span>mystorekeystore.keystore
 </code></pre></div>
 <p>Running this command should yield something similar to the following image:
-<img alt="keystool.png" src="/imgs/3985997309-keystool.png" /></p>
+<img alt="keystool.png" src="../imgs/3985997309-keystool.png" /></p>
 <p>With the package name and SHA-256 certificate fingerprint, you can finally create the <a href="https://developers.google.com/digital-asset-links/v1/getting-started">digital asset link</a> file, the filename should be <strong>assetlinks.json</strong></p>
 <p><div class="highlight"><pre><span></span><code><span class="p">[{</span>
 <span class="w">  </span><span class="nt">&quot;relation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;delegate_permission/common.handle_all_urls&quot;</span><span class="p">],</span>
@@ -512,7 +512,7 @@ https://&lt;your_domain&gt;/assetlinks.json
 <h2 id="windows-uwp-uri-handling">Windows UWP - Uri Handling<a class="headerlink" href="#windows-uwp-uri-handling" title="Permanent link">&para;</a></h2>
 <p>To enable Domain Association on UWP you need to reserve a game name on the Windows Dev Center dashboard, to do that you can follow the <a href="https://docs.microsoft.com/en-us/windows/uwp/publish/create-your-app-by-reserving-a-name">oficial documentation</a>.</p>
 <p>After you reserve your game name, you will need to go into the game settings under the Windows Dev Center dashboard, <strong>App Management</strong> -&gt; <strong>App identity</strong>:</p>
-<p><img alt="uwppfn.png" src="/imgs/2042686022-uwppfn.png" /></p>
+<p><img alt="uwppfn.png" src="../imgs/2042686022-uwppfn.png" /></p>
 <p>From there you can check your game <strong>Package Family Name</strong>, just as seen in the picture above.</p>
 <p>With it, you need to create a json file named <strong>windows-app-web-link</strong> (no extension) and upload it to your website, under the <strong>root</strong> or <strong>.well-know</strong> directory.</p>
 <div class="highlight"><pre><span></span><code><span class="p">[{</span>

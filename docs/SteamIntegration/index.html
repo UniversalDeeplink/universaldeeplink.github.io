@@ -12,7 +12,7 @@
         <meta name="author" content="ImaginationOverflow - Ana Correia & Diogo Cardoso">
       
       
-        <link rel="canonical" href="https://universaldeeplinking.imaginationoverflow.com/SteamIntegration/">
+        <link rel="canonical" href="https://universaldeeplinking.imaginationoverflow.com/docs/SteamIntegration/">
       
       
         <link rel="prev" href="../DomainAssociation/">
@@ -435,10 +435,10 @@
 <p>To avoid this issue, instead of registering your game to your custom URI, we configure the target systems to open steam instead of your game, but we parameterize Steam to open your game as soon as it's initialized.</p>
 <h2 id="configuring-steam-integration">Configuring Steam Integration<a class="headerlink" href="#configuring-steam-integration" title="Permanent link">&para;</a></h2>
 <p>To enable the Steam capability of ImaginationOverflow Deep Linking Plugin you first need to have a valid app id, for that you need to get access to <a href="https://partner.steamgames.com/steamdirect">Steam Direct</a>. After that valve will attribute to your game an ID.</p>
-<p><img alt="szvid.png" src="/imgs/1957370786-szvid.png" /></p>
+<p><img alt="szvid.png" src="../imgs/1957370786-szvid.png" /></p>
 <p>As an example, Sudoku Zenkai id is <strong>809850</strong>. </p>
 <p>Then you need to configure the plugin with this id:</p>
-<p><img alt="steamint.png" src="/imgs/2925578033-steamint.png" /></p>
+<p><img alt="steamint.png" src="../imgs/2925578033-steamint.png" /></p>
 <p>The final step of the configuration to enable the Steam integration is setting the <em>IsSteamBuild</em> Property under <strong>DeepLinkManager</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">ImaginationOverflow</span><span class="p">.</span><span class="n">UniversalDeepLinking</span><span class="p">.</span><span class="n">DeepLinkManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">IsSteamBuild</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 </code></pre></div>

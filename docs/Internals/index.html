@@ -12,7 +12,7 @@
         <meta name="author" content="ImaginationOverflow - Ana Correia & Diogo Cardoso">
       
       
-        <link rel="canonical" href="https://universaldeeplinking.imaginationoverflow.com/Internals/">
+        <link rel="canonical" href="https://universaldeeplinking.imaginationoverflow.com/docs/Internals/">
       
       
         <link rel="prev" href="../SteamIntegration/">
@@ -513,7 +513,7 @@
 
 <p>On this section, we talk a little on how the plugin works on each platform and explain why it has some caveats on some platforms. </p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p><img alt="plugincontent.png" src="/imgs/plugincontent.png" /></p>
+<p><img alt="plugincontent.png" src="../imgs/plugincontent.png" /></p>
 <p>The plugin content can be found inside the folder <strong>Plugins/ImaginationOverflow/UniversalDeepLinking</strong>, making easy to install and update when required. </p>
 <p>We included a simple <strong>Demo</strong> scene that allows you to test and play with the plugin before integrating it in your game.</p>
 <p>Inside the <strong>libs</strong> folder os all the required dlls in order for the plugin to work:</p>
@@ -542,9 +542,9 @@
 <p>Linux and Windows builds (Steam or Standalone) can't be activated via a Deep Link <strong>after the game is already running.</strong> This is because the link activation information is passed via argument on the <strong>main</strong> function, making it impossible to get information of the activation link after the game is already running. To work around this issue check the section below</p>
 <h3 id="standalone-activation-after-launch">Standalone activation after launch<a class="headerlink" href="#standalone-activation-after-launch" title="Permanent link">&para;</a></h3>
 <p>Although not included with the plugin, it's possible to work around the activation issue. In order to do that it's required that another application (Launcher application) is registered as the target for the deep link and that activation is responsible to launch or notify your app or game. So instead of the normal activation flow:</p>
-<p><img alt="normally.png" src="/images/normally.png" /></p>
+<p><img alt="normally.png" src="../images/normally.png" /></p>
 <p>It will run like the following</p>
-<p><img alt="launcher.png" src="/images/launcher.png" /></p>
+<p><img alt="launcher.png" src="../images/launcher.png" /></p>
 <p>The Launcher application is not included in the plugin for security and liability reasons, so you would need to develop it yourself and include it on your game/app final package. 
 We do however have an API for enabling this kind of behavior.</p>
 <p>First off, you would need to register the launcher application instead of your app/game as the target application for the plugin, in order to facilitate that we enable you to override what we register as the deep link target, your app/game executable or another application.</p>
