@@ -541,7 +541,11 @@
 <p>If the game build is for Steam, the plugin configures Steam to be the target of your custom URI instead of the game (this is done to work around DRM) but configures Steam to launch your game with the Uri that opened steam.</p>
 <p>Linux and Windows builds (Steam or Standalone) can't be activated via a Deep Link <strong>after the game is already running.</strong> This is because the link activation information is passed via argument on the <strong>main</strong> function, making it impossible to get information of the activation link after the game is already running. To work around this issue check the section below</p>
 <h3 id="standalone-activation-after-launch">Standalone activation after launch<a class="headerlink" href="#standalone-activation-after-launch" title="Permanent link">&para;</a></h3>
-<p>Although not included with the plugin, it's possible to work around the activation issue. In order to do that it's required that another application (Launcher application) is registered as the target for the deep link and that activation is responsible to launch or notify your app or game. So instead of the normal activation flow:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a href="https://assetstore.unity.com/packages/slug/243183?aid=1100l8RBa">Pro version</a> of the plugin includes an integrated launcher which you can activate on the plugin configuration window. The integration is transparent and you don't need to any change to your integration after you activate it. Steam support is also implemented!</p>
+</div>
+<p>It's possible to work around the activation issue. In order to do that it's required that another application (Launcher application) is registered as the target for the deep link and that activation is responsible to launch or notify your app or game. So instead of the normal activation flow:</p>
 <p><img alt="normally.png" src="../images/normally.png" /></p>
 <p>It will run like the following</p>
 <p><img alt="launcher.png" src="../images/launcher.png" /></p>
