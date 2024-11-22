@@ -380,6 +380,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#i-integrated-the-plugin-but-the-web-links-arent-triggering-my-app-domain-association" class="md-nav__link">
+    I integrated the plugin but the web links aren't triggering my app (Domain Association)
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -468,6 +475,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#i-integrated-the-plugin-but-the-web-links-arent-triggering-my-app-domain-association" class="md-nav__link">
+    I integrated the plugin but the web links aren't triggering my app (Domain Association)
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -532,10 +546,49 @@ Ensure that the utility has execution permissions (on a terminal chmod +x optool
 <h3 id="change-the-open-with-io-launcher-on-windows-standalone-with-launcher">Change the "Open with IO Launcher" on Windows Standalone with launcher<a class="headerlink" href="#change-the-open-with-io-launcher-on-windows-standalone-with-launcher" title="Permanent link">&para;</a></h3>
 <p>When you open a deep link on a Windows standalone target, the browsers will use the metadata of the launcher to prompt the user if he wants to open your product. For example, in chrome it will prompt <code>Open IO Launcher</code>. To change this prompt you have two alternatives:</p>
 <ol>
-<li>Use the launcher source included in the plugin to make a new launcher with your custom metadata.</li>
 <li>Use the <a href="http://www.angusj.com/resourcehacker/#download">Resource Hacker tool</a> and change the <strong>File description</strong> property.</li>
+<li>Use the launcher source included in the plugin to make a new launcher with your custom metadata.</li>
 </ol>
 <p>After you changed the launcher by either one of the above options, make a new build to a new target folder or simply change your target folder name. This will force the update of the launcher metadata.</p>
+<h3 id="i-integrated-the-plugin-but-the-web-links-arent-triggering-my-app-domain-association">I integrated the plugin but the web links aren't triggering my app (Domain Association)<a class="headerlink" href="#i-integrated-the-plugin-but-the-web-links-arent-triggering-my-app-domain-association" title="Permanent link">&para;</a></h3>
+<p>There are a lot of misconfigurations that can happen when adding support to domain association, so the first step is to always follow the <a href="https://universaldeeplinking.imaginationoverflow.com/docs/DomainAssociation/">documentation</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you already tested normal deep linking (with custom schemes) you can skip the below step!</p>
+</div>
+<p>First off let's establish that the plugin is working correctly with your code, and the best way of accomplish that is to change gears and configure a deep link to your application, for example, <a href="https://universaldeeplinking.imaginationoverflow.com/docs/GettingStarted/#configuring-the-plugin">configure the plugin</a> to active your application with a deeplink which scheme is <em>testdeeplinl</em>. 
+After you build your application with it use our <a href="https://universaldeeplinking.imaginationoverflow.com/test?l=testdeeplinl%3A%2F%2Ftest">test tool</a> to test it, if clicking on Test opens your application, the integration is working as expected and we can check everything regarding domain association.</p>
+<p><strong>Troubleshooting steps for domain association</strong>:</p>
+<ul>
+<li>Always use our <a href="https://universaldeeplinking.imaginationoverflow.com/test">test tool</a> to test the integration, it was purposely built for that, so if it works in it, the integration is correct!</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Your application won't activate if you use the browser address bar, this will always navigate to a web page on your domain, only operations like button clicks will trigger your app activation!</p>
+</div>
+<ul>
+<li>
+<p>Ensure that you don't have any deep link configuration with web links! If you have <strong>http</strong> or <strong>https</strong> schemes under the plugin <em>Deep Link Configuration</em> it can cause issues with the domain association</p>
+</li>
+<li>
+<p>Remove all <strong>paths</strong> restrictions from the domain association configuration, <strong>apple-app-site-association</strong> and <strong>assetlinks.json</strong>, this will reduce the number of variables that could be wrong with the configuration. </p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remember to add the path restrictions back, on Android the path is directly translated to the property <a href="https://developer.android.com/guide/topics/manifest/data-element#android:pathPattern">path pattern</a>. On iOS the plugin path restrictions are ignored so you should configure them in the <a href="https://developer.apple.com/documentation/xcode/supporting-associated-domains">apple-app-site-association file</a>!</p>
+</div>
+<ul>
+<li>
+<p>Ensure that your apple-app-site-association file and assetlinks can be accessed without any redirects, tools like <a href="https://reqbin.com/">reqbin</a> show you if you are making any redirects, note that redirects are forbidden.</p>
+</li>
+<li>
+<p>Double check all ids and generated information on apple-app-site-association and assetlinks files.</p>
+</li>
+<li>
+<p>Domain association works by the target device making a request to your site in order to confirm that you own it (that is the purpose of the AASA and asset links file) so make sure that there isn't anything preventing that (e.g VPNs)</p>
+</li>
+</ul>
 
 
 
